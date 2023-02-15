@@ -1,0 +1,181 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 offset-lg-4 mt-4">
+      <div
+        class="card border-primary mb-3"
+        style="max-width: 20rem"
+        *ngIf="currentRoute == '/add'"
+      >
+        <div class="card-header text-center">Agregar Producto</div>
+        <div class="card-body text-center">
+          <form [formGroup]="form" class="" (ngSubmit)="addProduct()">
+            <input
+              formControlName="name"
+              type="text"
+              class="form-control"
+              placeholder="Ingrese nombre"
+            />
+            <span
+              *ngIf="
+                form.get('name')?.hasError('required') &&
+                form.get('name')?.touched
+              "
+              style="color: crimson"
+              >El campo nombre es <strong>requerido</strong></span
+            >
+            <input
+              formControlName="description"
+              type="text"
+              class="form-control mt-2"
+              placeholder="Ingrese descripcion"
+            />
+            <span
+              *ngIf="
+                form.get('description')?.hasError('required') &&
+                form.get('description')?.touched
+              "
+              style="color: crimson"
+              >El campo descripcion es <strong>requerido</strong></span
+            >
+            <input
+              formControlName="price"
+              min="0"
+              type="number"
+              class="form-control mt-2"
+              placeholder="Ingrese precio"
+            />
+            <span
+              *ngIf="
+                form.get('price')?.hasError('required') &&
+                form.get('price')?.touched
+              "
+              style="color: crimson"
+              >El campo precio es <strong>requerido</strong></span
+            >
+            <input
+              formControlName="stock"
+              min="0"
+              type="number"
+              class="form-control mt-2"
+              placeholder="Ingrese stock"
+            />
+            <span
+              *ngIf="
+                form.get('stock')?.hasError('required') &&
+                form.get('stock')?.touched
+              "
+              style="color: crimson"
+              >El campo stock es <strong>requerido</strong></span
+            >
+            <div class="row mt-4 text-center">
+              <div class="col-lg-6">
+                <button class="btn btn-secondary ms-2" routerLink="/">
+                  Volver
+                </button>
+              </div>
+              <div class="col-lg-6">
+                <button
+                  class="btn btn-primary"
+                  [disabled]="form.invalid"
+                  type="submit"
+                >
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div
+        class="card border-primary mb-3"
+        style="max-width: 20rem"
+        *ngIf="currentRoute !== '/add'"
+      >
+        <div class="card-header text-center">Editar Producto</div>
+        <div class="card-body text-center">
+          <form
+            [formGroup]="form"
+            class=""
+            (ngSubmit)="updateProduct()"
+            *ngIf="currentRoute != '/add'"
+          >
+            <input
+              formControlName="name"
+              type="text"
+              class="form-control"
+              placeholder="Ingrese nombre"
+            />
+            <span
+              *ngIf="
+                form.get('name')?.hasError('required') &&
+                form.get('name')?.touched
+              "
+              style="color: crimson"
+              >El campo nombre es <strong>requerido</strong></span
+            >
+            <input
+              formControlName="description"
+              type="text"
+              class="form-control mt-2"
+              placeholder="Ingrese descripcion"
+            />
+            <span
+              *ngIf="
+                form.get('description')?.hasError('required') &&
+                form.get('description')?.touched
+              "
+              style="color: crimson"
+              >El campo descripcion es <strong>requerido</strong></span
+            >
+            <input
+              formControlName="price"
+              min="0"
+              type="number"
+              class="form-control mt-2"
+              placeholder="Ingrese precio"
+            />
+            <span
+              *ngIf="
+                form.get('price')?.hasError('required') &&
+                form.get('price')?.touched
+              "
+              style="color: crimson"
+              >El campo precio es <strong>requerido</strong></span
+            >
+            <input
+              formControlName="stock"
+              min="0"
+              type="number"
+              class="form-control mt-2"
+              placeholder="Ingrese stock"
+            />
+            <span
+              *ngIf="
+                form.get('stock')?.hasError('required') &&
+                form.get('stock')?.touched
+              "
+              style="color: crimson"
+              >El campo stock es <strong>requerido</strong></span
+            >
+            <div class="row mt-4 text-center">
+              <div class="col-lg-6">
+                <button class="btn btn-secondary ms-2" routerLink="/">
+                  Volver
+                </button>
+              </div>
+              <div class="col-lg-6">
+                <button
+                  class="btn btn-primary"
+                  [disabled]="form.invalid"
+                  type="submit"
+                >
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
